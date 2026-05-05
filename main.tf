@@ -15,7 +15,15 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "this" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = each.value["instance_type"]
+  instance_type = "t2.micro"
+
+  root_block_device {
+    encrypted = tru
+  }
+
+  metadata_options {
+    http_tokens = "required"
+  }
 
   dynamic "ebs_block_device" {
     for_each = var.ebs_block_devices
