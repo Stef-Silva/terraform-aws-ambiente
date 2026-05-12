@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Baixando o codigo 
         uses: actions/checkout@v6
-      - name: Instalando tfsec
-        run: curl -s https://raw.githubusercontent.com/aquasecurity/tfsec/master/scripts/install_linux.sh | bash
-      - name: Executando o tfsec
-        run: tfsec .
+      - name: tfsec
+        uses: aquasecurity/tfsec-pr-commenter-action@v1.2.0
+        with:
+          github_token: ${{ github.token }}
