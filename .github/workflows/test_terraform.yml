@@ -1,0 +1,14 @@
+name: test-terraform-module
+run-name: ${{ github.actor }} iniciou o teste do modulo Terraform 🚀
+on: 
+  push:
+jobs:
+  tfsec:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixando o codigo 
+        uses: actions/checkout@v6
+      - name: Instalando tfsec
+        run: curl -s https://raw.githubusercontent.com/aquasecurity/tfsec/master/scripts/install_linux.sh | bash
+      - name: Executando o tfsec
+        run: tfsec .
