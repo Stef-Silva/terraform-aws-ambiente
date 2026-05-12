@@ -11,4 +11,4 @@ jobs:
       - name: Instalando tfsec
         run: curl -s https://raw.githubusercontent.com/aquasecurity/tfsec/master/scripts/install_linux.sh | bash
       - name: Executando o tfsec
-        run: ls -la
+        run: tfsec .
